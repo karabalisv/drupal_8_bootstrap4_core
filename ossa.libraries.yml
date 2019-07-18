@@ -1,0 +1,13 @@
+global-styling:
+  css:
+    theme:
+        //use.fontawesome.com/releases/v5.0.9/css/all.css : { type: external }
+
+  js:
+
+  dependencies:
+      - core/jquery
+      - core/drupal.ajax
+      - core/drupal
+      - core/drupalSettings
+      - core/jquery.once

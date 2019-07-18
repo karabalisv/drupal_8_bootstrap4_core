@@ -1,0 +1,131 @@
+<?php
+
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+
+use Drupal\Core\Template\Attribute;
+use Drupal\block\Entity\Block;
+
+
+/**
+* Implements hook_preprocess_HOOK() for block.html.twig.
+*/
+function ossa_preprocess_block(&$variables) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node) {
+        $nid = $node->id();
+    }	else {
+        $nid = 0;
+    }
+    $variables['nodeid'] = $nid;
+}
+
+function ossa_preprocess_node(&$variables) {
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node) {
+
+    $nid = $node->id();
+    /**
+     * Node Url
+     */
+    $alias = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$nid);
+
+  }	else{
+
+    $alias = null;
+  }
+
+
+  $variables['alias'] = $alias;
+
+  $variables['base_path'] = base_path();
+
+
+}
+
+function ossa_preprocess_html(&$variables) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+        if ($node) {
+            $nid = $node->id();
+        }	else {
+            $nid = 0;
+        }
+        $variables['nodeid'] = $nid;
+}
+
+
+function ossa_preprocess_page_title(&$variables) {
+
+ $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node) {
+        $nid = $node->id();
+        $ntype = $node->getType();
+        //$subheader  = $node->field_subheader->getString();
+    }	else {
+        $nid = 0;
+        //$ntype = 0;
+        //$subheader  = " ";
+    }
+    $variables['nodeid'] = $nid;
+    /*$variables['nodetype'] = $ntype;
+    $variables['subheader'] = $subheader;*/
+
+}
+
+function ossa_preprocess_image(&$variables) {
+
+ $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node) {
+        $nid = $node->id();
+        $ntype = $node->getType();
+    }	else {
+        $nid = 0;
+        $ntype = 0;
+    }
+    $variables['nodeid'] = $nid;
+    $variables['nodetype'] = $ntype;
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function ossa_preprocess_field__node__body(&$vars) {
+  //unset($vars['attributes']['data-quickedit-field-id']);
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function ossa_preprocess_field__node__projects(&$vars) {
+  //unset($vars['attributes']['data-quickedit-field-id']);
+}
+
+function ossa_preprocess_page(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node) {
+
+    $nid        = $node->id();
+    $ntype      = $node->getType();
+    //$nodeclass  = $node->field_container_class->getString();
+    //$datadelay  = $node->field_data_wow_delay->getString();
+    //$subheader  = $node->field_subheader->getString();
+
+
+  }	else {
+    $nid = 0;
+    $ntype = "taxonomy";
+    //$nodeclass = "container";
+  }
+  $variables['nodeid']    = $nid;
+  $variables['nodetype']  = $ntype;
+/*  $variables['nodeclass'] = $nodeclass;
+  $variables['datadelay'] = $datadelay;
+  $variables['subheader'] = $subheader;*/
+
+}

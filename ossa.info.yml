@@ -1,0 +1,24 @@
+core: 8.x
+type: theme
+base theme: false
+name: 'Ossa Template'
+description: 'Ossa Template Based on Bootstrap 4 SCSS By @karabill'
+regions:
+  topbar              :   'Top Bar'
+  logo                :   'Branding'
+  navigation          :   'Navigation'
+  slideshow           :   'Slide Show Region'
+  highlighted         :   'Highlighted'
+  help                :   'Help'
+  page_title          :   'Page Title'
+  breadcrumbs         :   'Breadcrumbs'
+  content             :   'Content'
+  left_sidebar        :   'Left Sidebar'
+  right_sidebar       :   'Right Sidebar'
+  footer_one          :   'Footer One'
+  footer_two          :   'Footer Two'
+  footer_three        :   'Footer Third'
+  footer_four         :   'Footer Four'
+  copyright           :   'Copyright'
+libraries:
+  - 'ossa/global-styling'
